@@ -1,0 +1,85 @@
+# Sonnie Chauvin
+# Nov 5, 2025
+# Classwork #71
+
+#--------------------
+# Project Objectives
+#   Learning Loops ; Simple division calculator- will loop until no errors present- division by zero will display unique error message, non-numbers display unique message
+#--------------------
+#This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print('\tLearning Loops')
+    print("-" * 60)
+
+#This function will display the end of project
+def projectEnd():
+    print("\n")
+    print("-" * 60)
+    print("\tEnd of Project")
+
+# This function will get the user's entry for a float
+def getFloatData(prompt):
+    while (True):
+        try:
+            value = float(input(prompt))
+            return value
+
+        except ValueError:
+            print('\t\tERROR MSG! Non-numbers entered')
+
+# This function will get the user's entry for an integer
+def getIntegerData(prompt):
+
+    while (True):
+        try:
+            value = int(input(prompt))
+
+            return value
+
+        except ValueError:
+            print('\tMade mistake')
+
+
+
+#this function will get user's entry of string
+def getStringData(prompt):
+    value = input(prompt)
+
+    return value
+
+#this function will get a char input
+def getCharData(prompt):
+
+    while(True):
+        value = input(prompt)
+
+        value = value.upper()
+
+        if (value in ['Y', 'N']):
+            return value
+        else:
+            print('\t\tERROR MSG! Enter Y or N')
+
+def main():
+    #Display Start of Project
+    projectStart()
+
+    dividend = getIntegerData ('\tEnter dividend: ')
+    divisor = getIntegerData ('\tEnter divisor: ')
+
+    try:
+        result = dividend / divisor
+
+        print ('\tThe result is: ', result)
+
+    except ZeroDivisionError:
+        print('\tError MSG! Cannot divide by zero!')
+
+        
+    #Display end of project
+    projectEnd() 
+    
+main()
