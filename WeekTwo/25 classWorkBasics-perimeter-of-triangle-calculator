@@ -1,0 +1,47 @@
+# Sonnie Chauvin
+# October 27, 2025
+# Classwork #24
+#--------------------
+# Project Objectives
+#   Find the area of a rectangle
+#   Users will enter length and width (integers)
+#   area = length * width
+#--------------------
+
+#This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print('\tArea of Rectangle')
+    print("-" * 60)
+
+#This function will display the end of project
+def projectEnd():
+    print("\n")
+    print("-" * 60)
+    print("\tEnd of Project")
+    
+def main():
+    #Display Start of Project
+    projectStart()
+
+    #Assign variable
+    print('\tUser entry')
+    length = int(input('\tEnter length of rectangle: '))
+    width = int(input('\tEnter width of rectangle: ' ))
+
+    #Adding the numbers
+    areaRectangle = length * width
+
+    #Display summary
+    print('\n')
+    print("-" * 60)
+    print('\tSummary')
+    print("-" * 60)
+    print('\tArea of Rectangle is: ', areaRectangle)
+    
+    #Display end of project
+    projectEnd()
+    
+main()
