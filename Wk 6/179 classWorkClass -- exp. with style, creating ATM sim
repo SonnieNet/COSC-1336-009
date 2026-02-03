@@ -1,0 +1,111 @@
+# ------------------------------
+# Sonnie Chauvin
+# Dec 1, 2025
+# Classwork #180
+# ----------------------------
+# Project Objectives
+#  Creates a form using class + importing functions; uses getters - added getStaus
+#  Asks for name, plus a menu for withdrawal, deposit, etc. Uses multiple functions to break up tasks
+########################################################################################################
+
+#------------------------------------------------------------------------
+#          Call to myFunctions
+#------------------------------------------------------------------------
+
+from myFunctions import projectStart, projectEnd, getIntegerData, getStringData, getFloatData, getCharData
+
+
+#------------------------------------------------------------------------
+#          Getters / Setters
+#------------------------------------------------------------------------
+
+
+class Bank:          
+    def __init__(self, eName, eValue): #constructor
+        self.name = eName
+        self.balance = eValue #defining the attributes
+
+        #getters
+    def getName(self):
+        return self.name
+
+    def getBalance(self):
+        return self.balance
+
+        #setters
+    def setName(self,eValue):
+        self.name = eValue
+
+    def setBalance(self, eValue):
+        self.balance = eValue
+
+        #Method
+    def deposit(self, eValue):
+        self.balance = self.balance + eValue 
+
+    def withdraw(self, eValue):
+        self.balance = self.balance - eValue 
+        
+#------------------------------------------------------------------------
+#          Display
+#------------------------------------------------------------------------
+
+def displayBalance(myBank):
+    print('\n')
+    print('\tName: ', myBank.getName())
+    print('\tBalance: $', format(myBank.getBalance(), '.2f'), sep = '')
+
+
+#------------------------------------------------------------------------
+#          Main
+#------------------------------------------------------------------------    
+
+    
+def main():
+    
+    # Display start of project
+    projectStart()
+
+    name = getStringData('\tEnter the name: ')
+    value = getFloatData('\tEnter the beginning balance: $')
+
+    #set my objects
+    myBank = Bank(name, value)
+
+    
+
+#------------ creates a menu using CharData-----------------
+    
+    while (True):
+        selection = getCharData('\tSelect: D....Deposit | W....Withdrawal | X....Exit: ')
+
+        if (selection == 'D'):
+            print('\tDepositing....')
+            value = getFloatData('\tHow much to deposit?: $')
+            myBank.deposit(value)
+            
+                #display
+            displayBalance(myBank)
+
+            
+        elif (selection == 'W'):
+            print('\tWithdrawing....')
+            value = getFloatData('\tHow much to withdraw?: $')
+            myBank.withdraw(value)
+            
+                #display
+            displayBalance(myBank)
+            
+        else:
+            print('\tExiting...')
+                #display
+            displayBalance(myBank)
+            break
+        
+#-----------------------------------------------------------
+
+    
+    # Display end of project
+    projectEnd()
+   
+main()
