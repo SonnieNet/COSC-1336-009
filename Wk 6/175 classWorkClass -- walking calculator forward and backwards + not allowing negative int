@@ -1,0 +1,84 @@
+# ------------------------------
+# Sonnie Chauvin
+# Dec 1, 2025
+# Classwork #175
+# ----------------------------
+# Project Objectives
+#  Creates a form using class + importing functions; uses getters - added getStaus
+#  Everytime I walk, I advance 2 miles
+#  backward, I am losing 1 mile
+# does not allow negative miles
+# ----------------------------------------------------------------------------
+########################################################################################################
+
+from myFunctions import projectStart, projectEnd, getIntegerData, getStringData
+
+#------------------------------------------------------------------
+
+class Walking:            #creates a 'form' - class hides this information/hides the "receipe"
+    def __init__(self, eName, eMiles): #constructor
+        self.name = eName
+        self.milesWalk = eMiles #defining the attributes
+        
+    #Getters
+    def getMilesWalk (self):
+        return self.milesWalk
+
+    def getName(self):
+        return self.name
+
+    #setters
+    def setMilesWalk(self, eValue):
+        self.milesWalk = eValue
+
+    def setName (self, eValue):
+        self.name = eValue
+
+    # method
+    def walkMile(self):
+        self.milesWalk = self.milesWalk + 2 #everytime I walk, I advance by 2
+
+    def walkBack(self):
+        self.milesWalk = self.milesWalk -1
+
+        if (self.milesWalk < 0): # Does not allow for negative miles to be generated
+            self.milesWalk = 0
+        
+#------------------------------------------------------------------------
+        
+def main():
+    # Display start of project
+    projectStart()
+
+    name = getStringData('\tEnter your name: ')
+    value = getIntegerData('\tEnter your miles: ')
+
+    # object
+    myWalking = Walking(name, value) #must be after ^
+
+    #getters and print
+    print('\tName: ', myWalking.getName())
+    print('\tMiles walked: ', myWalking.getMilesWalk())
+
+    value = getIntegerData('\tHow many times you walked: ')
+
+#--------------------------------------------------
+#        Display Summary /Loop statements:
+#--------------------------------------------------
+
+    for ctr in range(value):  # creates loop
+        myWalking.walkMile()
+
+    print('\tNew miles walked: ', myWalking.getMilesWalk())
+
+    value = getIntegerData('\tHow many times did you walk backards?: ')
+
+    for ctr in range(value): #  creates loop
+        myWalking.walkBack()
+
+    print('\tNew miles walked: ', myWalking.getMilesWalk())
+    
+    # Display end of project
+    projectEnd()
+   
+main()
