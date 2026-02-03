@@ -1,0 +1,124 @@
+# ---------------------------------------------
+# Name: Sonnie Chauvin
+# Date: 09 11, 2025
+# Project: Project 3
+# Status: WIP
+# Class: COSC 1336
+# ---------------------------------------------
+# Project Objectives
+# Maintaining a checking account
+# ---------------------------------------------
+
+# This function will display the start of the project
+def projectStart():
+    print('Start of Project 3')
+    print('Written by: Sonnie Chauvin')
+    print('Date: 11/9/2025')
+    print('-' * 50 + '\n')
+    print('\tBank Tellers Entry')
+    print('-' * 50 + '\n')
+
+# This function will display the start of the project
+def projectEnd():
+    print('-' * 50 + '\n')
+    print('End of Project 3')
+
+# This function will return an integer input from the user
+def getIntegerData(prompt):
+    while (True):
+        try:
+            value = int(input(prompt))
+            if (value > 0):
+                return value
+            else:
+                print('\t\tERROR! No negative numbers or zero are allowed.')
+        except ValueError:
+            print('\t\tERROR! Must enter an integer.')
+            
+# This function will return a float input from the user
+def getFloatData(prompt):
+    value = float(input(prompt))
+    return value
+
+# This function will return a string input from the user
+def getStringData(prompt):
+    month = [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+
+    while (True):
+            value = input(prompt)
+
+            if (value.upper() in month): #upper note converts everythign to uppercase before ran; allows lowercase to be inputted
+                return value
+            else:
+                print('\t\tERROR! Enter month as 3 letters. (ex: Jan, Feb, Mar, etc.)')
+    value = input(prompt)
+    return value
+
+def getCharData (prompt):
+    while (True):
+            value = input (prompt)
+
+            if (value.upper() in ['Y','N']):
+                return value
+            else:
+                print('\t\tERROR! Invalid entry!')
+                
+def main(): 
+    # Calls function to display the start of project
+    projectStart()
+
+    while (True):
+        #get user's input
+        month = getStringData('Enter the month: ')
+        numberChecks = getIntegerData('Enter number of checks written this month: ')
+
+        #calculations
+        totalFee = findBankFee(numberChecks)
+
+        #display
+        displayResult(month, numberChecks, totalFee)
+
+        cmd = getCharData ('\tY to continue! N to exit: ')
+
+        if (cmd == 'N'):
+            print('\tBye!')
+            break
+    
+def findBankFee(numberChecks):
+    
+    basicFee = 10.00
+
+    if (numberChecks < 20):
+        bankFee = numberChecks * .1 
+                               
+    elif (numberChecks < 40):
+        bankFee = numberChecks * .08 
+
+    elif (numberChecks < 60):
+        bankFee = numberChecks * .06 
+
+    elif (numberChecks >= 60):
+        bankFee = numberChecks * .04 
+
+    else:
+        bankFee = .10 
+
+    totalFee = basicFee + bankFee * numberChecks
+    
+    return bankFee
+
+def displayResult(month, numberChecks, bankFee):
+    
+    print('-' * 50 + '\n')
+    print('\tBank Summary')
+    print('-' * 50 + '\n')
+    print('\tMonth of Statement: ', month)
+    print('\tFor writing ', numberChecks,' checks, the bank fee is $', format(bankFee, '.2f'), sep = '')
+
+   
+    # Calls function to display the start of project
+    projectEnd()
+      
+main() # calling the function main()
+
+
