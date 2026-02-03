@@ -1,0 +1,40 @@
+# Sonnie Chauvin
+# October 27, 2025
+# Classwork #18
+#--------------------
+# Project Objectives
+#   Learning the basics of Python
+#--------------------
+
+# This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print('\tLearning the basics of Python')
+    print("-" * 60)
+
+# This function will display the end of project
+def projectEnd():
+    print("\n")
+    print("-" * 60)
+    print("\tEnd of Project")
+    
+def main():
+    # Display Start of Project
+    projectStart()
+
+    # Assign variable
+    lastName = 'Chauvin' # string variable
+
+    # display summary
+    print('\n')
+    print("-" * 60)
+    print('\tSummary')
+    print("-" * 60)
+    print('\tName is: ', lastName)
+    
+    # Display end of project
+    projectEnd()
+    
+main()
