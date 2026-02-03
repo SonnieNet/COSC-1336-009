@@ -1,0 +1,38 @@
+# ------------------------------ Sonnie Chauvin
+# November 17th, 2025
+# Classwork #130
+# ----------------------------
+# Project Objectives
+#   Learning Dictionary ;  dictionary: outputs sum of values
+# --------------------------------
+
+# This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print("\tLearning Dictionary")
+    print("-" * 60)
+
+# This fucntion will display the end of project
+def projectEnd():
+    print('\n')
+    print('-' * 60)
+    print('\tEnd of project')
+
+    
+def main():
+    # Display start of project
+    projectStart()
+
+    stocks = {'IBM' : 200, 'TSLA' : 300, 'NVDA' : 167, 'MSFT' : 200}
+
+    print('\tStocks: ', stocks)
+
+    sumValue = sum(stocks.values())
+    print('\tSum: ', sumValue)
+    
+    # Display end of project
+    projectEnd()
+   
+main()
