@@ -1,0 +1,60 @@
+# Sonnie Chauvin
+# Nov 3, 2025
+# Classwork #44
+#--------------------
+# Project Objectives
+#   Learning Loops
+#--------------------
+
+#This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print('\tLearning Loops')
+    print("-" * 60)
+
+#This function will display the end of project
+def projectEnd():
+    print("\n")
+    print("-" * 60)
+    print("\tEnd of Project")
+
+# This function will get the user's entry for a float
+def getFloatData(prompt):
+   value = float(input(prompt))
+
+   return value
+
+# This function will get the user's entry for an integer
+def getIntegerData(prompt):
+    value = int(input(prompt))
+
+    return value
+
+#this function will get user's entry of string
+def getStringData(prompt):
+    value = input(prompt)
+
+    return value
+
+def main():
+    #Display Start of Project
+    projectStart()
+
+    #wLoop
+    #stop watch set 0
+    #everytime I looop, I inremenet the stop
+
+    stopWatch= 0
+
+    while (stopWatch < 5):
+        print(stopWatch, '\tI am Sonnie')
+
+        stopWatch = stopWatch +1 #increment
+
+   
+    #Display end of project
+    projectEnd() 
+    
+main()
