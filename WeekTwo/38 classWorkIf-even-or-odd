@@ -1,0 +1,61 @@
+# Sonnie Chauvin
+# October 27, 2025
+# Classwork #38
+#--------------------
+# Project Objectives
+#   Learning "If"s
+#--------------------
+
+#This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print('\tLearning Ifs')
+    print("-" * 60)
+
+#This function will display the end of project
+def projectEnd():
+    print("\n")
+    print("-" * 60)
+    print("\tEnd of Project")
+
+# This function will get the user's entry for a float
+def getFloatData(prompt):
+   value = float(input(prompt))
+
+   return value
+
+# This function will get the user's entry for an integer
+def getIntegerData(prompt):
+    value = int(input(prompt))
+
+    return value
+
+#this function will get user's entry of string
+def getStringData(prompt):
+    value = input(prompt)
+
+    return value
+
+def main():
+    #Display Start of Project
+    projectStart()
+
+    #Assign variable
+    print('\tUser entry')
+    value = getIntegerData('\tEnter an Integer: ')
+
+    # ??
+    # Display IF even or odd,
+    if (value % 2 == 0):
+        print('\tIt is even')
+    else:
+        print('\tIt is odd')
+
+    #Display summary
+    
+    #Display end of project
+    projectEnd() 
+    
+main()
