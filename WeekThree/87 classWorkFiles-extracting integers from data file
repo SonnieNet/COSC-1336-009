@@ -1,0 +1,106 @@
+# Sonnie Chauvin
+# Nov 5, 2025
+# Classwork #87
+
+#--------------------
+# Project Objectives
+#   Learning Files - made an independent "text" data file- code removed spaces between text + converted to integer, added count numbers and sum, only extracting integers from data1 file.
+
+#--------------------
+#This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print('\tLearning Files')
+    print("-" * 60)
+
+#This function will display the end of project
+def projectEnd():
+    print("\n")
+    print("-" * 60)
+    print("\tEnd of Project")
+
+# This function will get the user's entry for a float
+def getFloatData(prompt):
+    while (True):
+        try:
+            value = float(input(prompt))
+            return value
+
+        except ValueError:
+            print('\t\tERROR MSG! Non-numbers entered')
+
+
+# This function will get the user's entry for an integer
+def getIntegerData(prompt):
+
+    while (True):
+        try:
+            value = int(input(prompt))
+
+            if (value >= 1 and value <= 5):
+                return value
+            else:
+                print('\t\tError MSG! Enter values between 1 and 5')
+                
+        except ValueError:
+            print('\tError MSG! Non-numbers entered!')
+
+#this function will get user's entry of string
+def getStringData(prompt):
+    value = input(prompt).strip(';')
+
+    return value
+
+#this function will get a char input
+def getCharData(prompt):
+
+    while(True):
+        value = input(prompt)
+
+        value = value.upper()
+
+        if (value in ['B', 'C', 'X']):
+            return value
+        else:
+            print('\t\tERROR MSG! Enter B, C, or X')
+
+def main():
+    #Display Start of Project
+    projectStart()
+
+    # count of numbers
+    #sum of the numbers
+    countNumbers = 0
+    sumNumbers = 0
+    
+    #object (variable name that assigns the file)
+    try:
+        fileRead = open('data1.txt', 'r')
+
+        for line in fileRead:
+            line = line.strip('\n').strip(' ')
+
+            try:
+                value = int(line) #converting line to an integer
+
+                print('\tThe value is: ', value)
+
+                countNumbers = countNumbers + 1 # increment
+                sumNumbers = sumNumbers + value
+                
+            except ValueError:
+                continue
+            
+        fileRead.close()
+        print('\tCount of Numbers: ', countNumbers)
+        print('\tSum of Numbers: ', sumNumbers)
+
+    except FileNotFoundError:
+        print('\t\tERROR MSG! File is here')
+        
+    #Display end of project
+    projectEnd() 
+    
+main()
