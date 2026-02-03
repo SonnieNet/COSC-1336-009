@@ -1,0 +1,86 @@
+# ------------------------------ Sonnie Chauvin
+# November 17th, 2025
+# Classwork #127
+# ----------------------------
+# Project Objectives
+#   Learning lists ;  shows only duplicates (&)
+# --------------------------------
+
+# This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print("\tLearning lists")
+    print("-" * 60)
+
+# This fucntion will display the end of project
+def projectEnd():
+    print('\n')
+    print('-' * 60)
+    print('\tEnd of project')
+
+# This function will get the user's entry for a float
+def getFloatData(prompt):
+    while (True):
+        try:
+            
+            value = float(input(prompt))
+
+            return value
+
+        except ValueError:
+            print('\t\tERRor MSG! Non numbers entered')
+
+# This fucntion will get the user's entry for an integer
+def getIntegerData(prompt):
+
+    while (True):
+        try:
+            value = int(input(prompt))
+            return value
+
+        except ValueError:
+            print('\t\tERRor MSG! Non numbers entered')
+
+# This function will get the user's entry of string
+def getStringData(prompt):
+    value = input(prompt).strip(' ')
+
+    return value
+
+# This function will get a char input
+def getCharData(prompt):
+
+    while (True):
+        value = input(prompt)
+
+        value = value.upper()
+
+        if (value in ['B', 'C', 'X']):
+            return value
+        else:
+             print('\t\tERRor MSG! Enter B | C | X')
+
+    
+def main():
+    # Display start of project
+    projectStart()
+
+    python = [1, 3, 4, 88, 98 ,1]
+    math = [2, 1, 3, 4, 56, 99, 2]
+
+    setPython = set(python) #cant use calculation in print statement, so set calc defined here
+    setMath = set(math)
+    
+    print('\tPython Student List: ', setPython) #set removes duplicates
+    print('\tMath Student list: ', setMath)
+
+    #students who are enrolled in classes
+    students = setPython & setMath #union/& ; shows only the repeating characters
+    print('\tStudents enrolled in both classes: ', students)
+    
+    # Display end of project
+    projectEnd()
+   
+main()
