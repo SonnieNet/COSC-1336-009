@@ -1,0 +1,107 @@
+# ------------------------------
+# Sonnie Chauvin
+# November 19th, 2025
+# Classwork #160
+# ----------------------------
+# Project Objectives
+#   Learning OOP - USER ENTRY FOR VALUES-
+#   using method/find to get the calculations (parameter AND area),
+#   using getters to create display,
+#   removed setters
+# --------------------------------
+
+# class:Identifier starts w/ capitial
+class Rectangle:
+    def __init__(self, eLength, eWidth): #e___ is a temp. variable
+        self.length = eLength
+        self.width = eWidth
+
+    #getters
+    def getLength(self):
+        return self.length
+
+    def getWidth(self):
+        return self.width
+
+    #method to find the area/to calculate
+    def findArea(self):
+        return self.length * self.width
+
+    def findParameter(self):
+        return 2*self.length + 2*self.width
+    
+# This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print("\tLearning OOP")
+    print("-" * 60)
+
+# This fucntion will display the end of project
+def projectEnd():
+    print('\n')
+    print('-' * 60)
+    print('\tEnd of project')
+
+# This function will get the user's entry for a float
+def getFloatData(prompt):
+    while (True):
+        try:
+            
+            value = float(input(prompt))
+
+            return value
+
+        except ValueError:
+            print('\t\tERRor MSG! Non numbers entered')
+
+# This fucntion will get the user's entry for an integer
+def getIntegerData(prompt):
+
+    while (True):
+        try:
+            value = int(input(prompt))
+            return value
+
+        except ValueError:
+            print('\t\tERRor MSG! Non numbers entered')
+
+# This function will get the user's entry of string
+def getStringData(prompt):
+    value = input(prompt).strip(' ')
+
+    return value
+
+# This function will get a char input
+def getCharData(prompt):
+
+    while (True):
+        value = input(prompt)
+
+        value = value.upper()
+
+        if (value in ['Y', 'N']):
+            return value
+        else:
+             print('\t\tERRor MSG! Enter Y | N')
+
+def main():
+    # Display start of project
+    projectStart()
+
+    length = getIntegerData('\tEnter the length: ')
+    width = getIntegerData('\tEnter the width: ')
+                           
+    myRectangle = Rectangle(length,width)
+
+    #getters to display
+    print('\tLength is: ',myRectangle.getLength())
+    print('\tWidth is: ',myRectangle.getWidth())
+    print('\tArea is: ', myRectangle.findArea())
+    print('\tParameter is: ', myRectangle.findParameter())
+    
+    # Display end of project
+    projectEnd()
+   
+main()
