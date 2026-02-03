@@ -1,0 +1,41 @@
+# ---------------------------------------------
+# Name: Sonnie Chauvin
+# Date: Oct 17 2025
+# Project: Project 1
+# Status: Completed
+# Class: COSC 1336
+# ---------------------------------------------
+# Project Objectives
+#   Calculate the average grade of a student based on four exam scores.
+#   averageGrade = (examOne + examTwo + examThree + examFour)/4
+# ---------------------------------------------
+
+def main(): 
+# Project start
+    print('Start of Project 1')
+    print('-' * 30 + '\n')
+
+# User Entry
+    name = input('\tWhat is your name?')
+    examOne = float(input('\tEnter Exam 1 score: '))
+    examTwo = float(input('\tEnter Exam 2 score: '))
+    examThree = float(input('\tEnter Exam 3 score: '))
+    examFour = float(input('\tEnter Exam 4 score: '))
+    print('-' * 30 + '\n')
+
+# Finding the Average
+    averageGrade = (examOne + examTwo + examThree + examFour) / 4
+
+# Displaying result
+    print("Grade Summary")
+    print('-' * 30 + '\n')
+    print('\t', name, end = '')
+    print(" 's average grade is:", format(averageGrade,".2f"))
+                                        
+
+    # project end
+    print('\n' + '-' * 30)
+    print('\nEnd of Project 1')
+      
+main() # calling the function main()
+
