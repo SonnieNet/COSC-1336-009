@@ -1,0 +1,45 @@
+# Sonnie Chauvin
+# October 27, 2025
+# Classwork #22
+#--------------------
+# Project Objectives
+#   Learning the basics of Python
+#--------------------
+
+#This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print('\tLearning the basics of Python')
+    print("-" * 60)
+
+#This function will display the end of project
+def projectEnd():
+    print("\n")
+    print("-" * 60)
+    print("\tEnd of Project")
+    
+def main():
+    #Display Start of Project
+    projectStart()
+
+    #Assign variable
+    print('\tUser entry')
+    valueOne = int(input('\tEnter an integer: '))
+    valueTwo = int(input('\tEnter another integer: ' ))
+
+    #Adding the numbers
+    sumValues = valueOne + valueTwo
+
+    #Display summary
+    print('\n')
+    print("-" * 60)
+    print('\tSummary')
+    print("-" * 60)
+    print('\tThe sum is: ', sumValues)
+    
+    #Display end of project
+    projectEnd()
+    
+main()
