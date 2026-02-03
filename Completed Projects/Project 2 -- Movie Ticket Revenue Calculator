@@ -1,0 +1,80 @@
+# ---------------------------------------------
+# Name: Sonnie Chauvin
+# Date: November 2nd, 2025
+# Project: Project 2
+# Status: Complete
+# Class: COSC 1336 (009)
+# ---------------------------------------------
+# Project Objectives
+# Movie Ticket Revenue Calculator
+# ---------------------------------------------
+
+# This function will display the start of the project
+def projectStart():
+    print('Project 2')
+    print('Written by: Sonnie Chauvin ')
+    print('Date: 11/2/2025 ')
+    print('-' * 50)
+    print('Box Office Entry')
+    print('-' * 50 + '\n')
+
+# This function will display the start of the project
+def projectEnd():
+    print('-' * 50 + '\n')
+    print('End of Project 2')
+
+# This function will return an integer input from the user
+def getIntegerData(prompt):
+    value = int(input(prompt))
+    return value
+
+# This function will return a float input from the user
+def getFloatData(prompt):
+    value = float(input(prompt))
+    return value
+
+# This function will return a string input from the user
+def getStringData(prompt):
+    value = input(prompt)
+    return value
+
+def main(): 
+    # Calls function to display the start of project
+    projectStart()
+
+    # Below we start writing out code
+    
+    #Assign variable
+    movieName = getStringData('\tEnter name of movie: ')
+    childTickets = getIntegerData('\tEnter number of child tickets sold: ')
+    adultTickets = getIntegerData('\tEnter number of adult tickets sold: ')
+    seniorTickets = getIntegerData('\tEnter number of senior tickets sold: ')
+    
+    # Calculating total amount of tickets sold
+    totalTickets =(childTickets + adultTickets + seniorTickets)
+
+    # Calculating gross revenue
+    grossRevenue = ((childTickets * 6.00)+(adultTickets * 10.00) + (seniorTickets * 8.00))
+
+    # Calculating Theaters share
+    theatersShare = (grossRevenue * .80)
+
+    # Calculating distributors share
+    distributorsShare = (grossRevenue * .20)
+
+    # Display Summary
+    print("-" * 50)
+    print('Summary: Movie Income Distribution')
+    print("-" * 50)
+
+    print('\tMovie Name: ', movieName)
+    print('\tTotal Tickets Sold: ', totalTickets)
+    print('\tGrossRevenue: $', format(grossRevenue, '.2f'), sep = '')
+    print('\n')
+    print('\tTheater Keeps: $', format(theatersShare, '.2f'), sep = '')
+    print('\tDistributor Receieves: $',format(distributorsShare, '.2f'), sep = '')
+    
+    # Calls function to display the start of project
+    projectEnd()
+      
+main() 
