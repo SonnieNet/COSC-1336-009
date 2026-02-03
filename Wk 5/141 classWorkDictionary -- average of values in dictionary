@@ -1,0 +1,38 @@
+# ------------------------------ Sonnie Chauvin
+# November 17th, 2025
+# Classwork #141
+# ----------------------------
+# Project Objectives
+#   Learning Dictionary ;  dictionary: shows average of values in two dictionaries
+# --------------------------------
+
+# This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print("\tLearning Dictionary")
+    print("-" * 60)
+
+# This fucntion will display the end of project
+def projectEnd():
+    print('\n')
+    print('-' * 60)
+    print('\tEnd of project')
+
+def main():
+    # Display start of project
+    projectStart()
+
+    grades = {'Mat': [100, 90 ,80], 'Henry': [100, 101, 95]}
+
+    print('\tStudents: ', grades)
+
+    for key in grades:
+        average = sum(grades[key]) / len(grades[key])
+        print(key, grades[key], format(average, '.2f'))
+        
+    # Display end of project
+    projectEnd()
+   
+main()
