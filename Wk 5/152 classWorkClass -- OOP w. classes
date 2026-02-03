@@ -1,0 +1,88 @@
+# ------------------------------
+# Sonnie Chauvin
+# November 19th, 2025
+# Classwork #149
+# ----------------------------
+# Project Objectives
+#   Learning OOP - class; used as an organizer for code
+# --------------------------------
+
+# class:Identifier starts w/ capitial
+class Books:
+    def __init__(self):  # Initialize/constructor... (self) means it belongs to the class
+        print('\tHello!')
+        print('\tI am learning OOP')
+
+    def displayHi(self): #method must have "self" = belongs  to the class
+        print('\tHeyo!!')
+
+# This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print("\tLearning OOP")
+    print("-" * 60)
+
+# This fucntion will display the end of project
+def projectEnd():
+    print('\n')
+    print('-' * 60)
+    print('\tEnd of project')
+
+# This function will get the user's entry for a float
+def getFloatData(prompt):
+    while (True):
+        try:
+            
+            value = float(input(prompt))
+
+            return value
+
+        except ValueError:
+            print('\t\tERRor MSG! Non numbers entered')
+
+# This fucntion will get the user's entry for an integer
+def getIntegerData(prompt):
+
+    while (True):
+        try:
+            value = int(input(prompt))
+            return value
+
+        except ValueError:
+            print('\t\tERRor MSG! Non numbers entered')
+
+# This function will get the user's entry of string
+def getStringData(prompt):
+    value = input(prompt).strip(' ')
+
+    return value
+
+# This function will get a char input
+def getCharData(prompt):
+
+    while (True):
+        value = input(prompt)
+
+        value = value.upper()
+
+        if (value in ['Y', 'N']):
+            return value
+        else:
+             print('\t\tERRor MSG! Enter Y | N')
+
+def main():
+    # Display start of project
+    projectStart()
+
+#creat an object/instance of the class/ process instantiation
+    myBooks = Books()
+
+# Call the methods
+    myBooks.displayHi()
+
+    # Display end of project
+    projectEnd()
+   
+main()
