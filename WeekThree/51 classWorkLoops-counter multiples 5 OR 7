@@ -1,0 +1,61 @@
+# Sonnie Chauvin
+# Nov 3, 2025
+# Classwork #51
+#--------------------
+# Project Objectives
+#   Learning Loops ; repeat print on line numbers 1-50, multiples of 5 **OR*** 7
+#--------------------
+
+#This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print('\tLearning Loops')
+    print("-" * 60)
+
+#This function will display the end of project
+def projectEnd():
+    print("\n")
+    print("-" * 60)
+    print("\tEnd of Project")
+
+# This function will get the user's entry for a float
+def getFloatData(prompt):
+   value = float(input(prompt))
+
+   return value
+
+# This function will get the user's entry for an integer
+def getIntegerData(prompt):
+    value = int(input(prompt))
+
+    return value
+
+#this function will get user's entry of string
+def getStringData(prompt):
+    value = input(prompt)
+
+    return value
+
+def main():
+    #Display Start of Project
+    projectStart()
+
+    # display all even numbers between 1 and 50 which are multiple of 5 OR 7
+    
+    counter= 1
+
+    while (counter <= 50): # set
+
+        # get subset
+        if (counter % 5 == 0 or counter % 7 == 0):
+            print(counter, '\tI am Sonnie')
+
+        counter = counter +1 #increment
+
+   
+    #Display end of project
+    projectEnd() 
+    
+main()
