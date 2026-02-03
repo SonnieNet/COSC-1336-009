@@ -1,0 +1,39 @@
+# ------------------------------ Sonnie Chauvin
+# November 17th, 2025
+# Classwork #130
+# ----------------------------
+# Project Objectives
+#   Learning Dictionary ;  dictionary: outputs key entries and values on induvidual lines
+# --------------------------------
+
+# This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print("\tLearning Dictionary")
+    print("-" * 60)
+
+# This fucntion will display the end of project
+def projectEnd():
+    print('\n')
+    print('-' * 60)
+    print('\tEnd of project')
+
+
+    
+def main():
+    # Display start of project
+    projectStart()
+
+    stocks = {'IBM' : 200, 'TSLA' : 300, 'NVDA' : 167, 'MSFT' : 200}
+
+    print('\tStocks: ', stocks)
+
+    for keys in stocks: #like CTR, puts all entries in key on own seperate line
+        print(keys, stocks[keys])
+        
+    # Display end of project
+    projectEnd()
+   
+main()
