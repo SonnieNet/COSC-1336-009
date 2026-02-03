@@ -1,0 +1,47 @@
+# Sonnie Chauvin
+# October 27, 2025
+# Classwork #26
+#--------------------
+# Project Objectives
+#   Find the gross pay
+#   Users will enter hours worked and wage
+#   Gross pay = wage * hours worked (both float)
+#--------------------
+
+#This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print('\tGross pay')
+    print("-" * 60)
+
+#This function will display the end of project
+def projectEnd():
+    print("\n")
+    print("-" * 60)
+    print("\tEnd of Project")
+    
+def main():
+    #Display Start of Project
+    projectStart()
+
+    #Assign variable
+    print('\tUser entry')
+    hoursWorked = float(input('\tHow many hours did you work?: '))
+    wage = float(input('\tWhat is your hourly wage?: $'))
+
+    #Multiplying hours worked by wage
+    grossPay = hoursWorked * wage
+
+    #Display summary
+    print('\n')
+    print("-" * 60)
+    print('\tSummary of Gross pay')
+    print("-" * 60)
+    print('\tGross pay is: $', format(grossPay, '.2f'), sep = '') #format allows 2 decimal places, sep removes space between $ and answer
+    
+    #Display end of project
+    projectEnd()
+    
+main()
