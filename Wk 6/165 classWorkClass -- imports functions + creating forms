@@ -1,0 +1,37 @@
+# ------------------------------
+# Sonnie Chauvin
+# November 24th, 2025
+# Classwork #165
+# ----------------------------
+# Project Objectives
+#  removed project start and project end + all functions,
+#  imports them from 'myFunctions' in the same folder  
+# --------------------------------
+
+from myFunctions import projectStart, projectEnd, getIntegerData, getStringData
+
+class Friends:            #creates a 'form'
+    def __init__(self):
+        self.name = None
+
+    #Setters
+    def setName(self, eValue):
+        self.name = eValue
+
+    #Getters
+    def getName (self):
+        return self.name
+
+def main():
+    # Display start of project
+    projectStart()
+
+    # object
+    myFriends = Friends()
+
+    name = getStringData('\tWhat is your name?: ')
+    
+        # Display end of project
+    projectEnd()
+   
+main()
