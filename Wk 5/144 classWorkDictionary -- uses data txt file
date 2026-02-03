@@ -1,0 +1,99 @@
+# ------------------------------
+# Sonnie Chauvin
+# November 19th, 2025
+# Classwork #144
+# ----------------------------
+# Project Objectives
+#   Learning Dictionary ; has data text file attached and is formatted; has error message if no file found with name specified
+# --------------------------------
+
+# This function will display the start of project
+def projectStart():
+    print("-" * 60)
+    print("\tStart of Project")
+    print("\tWritten By Sonnie Chauvin")
+    print("\tLearning Dictionary")
+    print("-" * 60)
+
+# This fucntion will display the end of project
+def projectEnd():
+    print('\n')
+    print('-' * 60)
+    print('\tEnd of project')
+
+# This function will get the user's entry for a float
+def getFloatData(prompt):
+    while (True):
+        try:
+            
+            value = float(input(prompt))
+
+            return value
+
+        except ValueError:
+            print('\t\tERRor MSG! Non numbers entered')
+
+# This fucntion will get the user's entry for an integer
+def getIntegerData(prompt):
+
+    while (True):
+        try:
+            value = int(input(prompt))
+            return value
+
+        except ValueError:
+            print('\t\tERRor MSG! Non numbers entered')
+
+# This function will get the user's entry of string
+def getStringData(prompt):
+    value = input(prompt).strip(' ')
+
+    return value
+
+# This function will get a char input
+def getCharData(prompt):
+
+    while (True):
+        value = input(prompt)
+
+        value = value.upper()
+
+        if (value in ['B', 'C', 'X']):
+            return value
+        else:
+             print('\t\tERRor MSG! Enter B | C | X')
+
+#This function will read datat file
+def readDataFile(fileName):
+
+    try:
+        fileRead = open(fileName, 'r')
+
+        for line in fileRead:
+            line = line.strip('\n') #removes big space from in between each line in data file            print(line)
+
+            if (len(line) > 0): #if no length on line (empty/blank) then do not split
+                
+                myData = line.split(',') #adds commas in between values on each line
+
+                key = myData[0].strip(' ').upper()
+                value = myData[1].strip(' ')
+
+                print(key, ':', value)
+            
+        fileRead.close()
+        
+    except FileNotFoundError:
+        
+        print('\tError MSG!! Data file not found!')
+
+def main():
+    # Display start of project
+    projectStart()
+
+    readDataFile('data.txt') #must callback data file name to have it pull
+           
+    # Display end of project
+    projectEnd()
+   
+main()
