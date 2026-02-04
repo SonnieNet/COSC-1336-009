@@ -1,0 +1,149 @@
+# ---------------------------------------------
+# Name: Sonnie Chauvin
+# Date: 12/3/2025
+# Project: Project 8
+# Status: WIP
+# Class: COSC 1336
+# ---------------------------------------------
+# Project Objectives
+#    creates and manages a student database using a dictionary
+# ---------------------------------------------
+
+# This function will display the start of the project
+def projectStart():
+    print('Start of Project 8')
+    print('Written by: Sonnie Chauvin')
+    print('Date: 12/3/2025 ')
+    print('-' * 50 )
+    print('\tStudent Database')
+    print('-' * 50 + '\n')
+
+# This function will display the start of the project
+def projectEnd():
+    print('-' * 50)
+    print('End of Project 8')
+
+# This function will return an integer input from the user
+def getIntegerData(prompt):
+    while (True):
+        try:
+            value = int(input(prompt))
+            return value
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!')
+
+# This function will return a float input from the user
+def getFloatData(prompt):
+    while (True):
+        try:
+            value = float(input(prompt))
+            return value
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!')
+
+# This function will return a string input from the user
+def getStringData(prompt):
+    value = input(prompt)
+    return value
+
+# This function will return a string input from the user
+def getCharData(prompt):
+
+    while (True):
+        value = input(prompt)
+
+        value = value.upper()
+
+        if (value in ['Y', 'N']):
+            return value
+        else:
+             print('\t\tERRor MSG! Enter Y | N')
+
+
+#---------------------------------------------------------------------------
+#-------------------Read Data-----------------------------------------------
+#---------------------------------------------------------------------------
+def readData(fileName):
+    try:
+        fileRead = open(fileName, 'r')
+        myStudent = {}
+        
+        for line in fileRead:
+            line = line.strip('\n') #removes big space from in between each line in data file            print(line)
+
+            if (len(line) > 0): #if no length on line (empty/blank) then do not split
+                
+                myData = line.split(',') #adds commas in between values on each line
+
+                key = myData[0].strip(' ').upper()
+                value = myData[1].strip(' ')
+
+                myStudent [key] = value #adds info into dictionary format
+            
+        fileRead.close()
+        
+        return myStudent
+
+    except FileNotFoundError:
+        print('\tERROR MSG! File not found.')
+    
+
+#---------------------------------------------------------------------------
+#-------------------Display Summary-----------------------------------------
+#---------------------------------------------------------------------------
+
+def displaySummary():
+    
+    myStudent = readData('data.txt')
+    searchCount = 0
+
+    while (True):
+        print('-' * 20)
+        print('Search Student Information')
+        print('-' * 20)
+        
+
+        cmd = getCharData('\tAre you ready to search? Y) Yes | N) No : ')
+
+        if (cmd =='N'):
+            print('\tSearch Completed. Thank you.')
+            print('\tYou have searched ', searchCount, 'time(s).')
+            break
+
+        try: #Try and except allows for error message if ID is inputted that has no student associated
+            searchID = getStringData('Enter a student ID: ')
+            searchCount += 1
+            print('\tName: ', myStudent[searchID.upper()])
+            print('\n')
+            
+        except KeyError:
+            print('\tError MSG! Student not found!')
+
+        command = getCharData('\t\tY) Search again | N) Stop searching: ')
+
+        if (command == 'N'): #Doesn't need an else statement, will continue to loop if Y is selected
+            print('\tBye!')
+            break
+        
+
+
+
+
+#----------------------------Main----------
+    
+
+def main(): 
+    # Calls function to display the start of project
+    projectStart()
+
+    myStudent = displaySummary()
+    
+
+    # Below we start coding
+
+    # Calls function to display the start of project
+    projectEnd()
+      
+main() # calling the function main()
+
+
