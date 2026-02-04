@@ -1,0 +1,284 @@
+# ---------------------------------------------
+# Name: Sonnie Chauvin
+# Date: 12/3/2025
+# Project: Project 10
+# Status: Completed
+# Class: COSC 1336
+# ---------------------------------------------
+# Project Objectives
+#   Calculates patient's hospital bill based on the number of days stayed, surgeries performed, and medications administered
+# ---------------------------------------------
+
+
+#--------------------------------------------------------------------------
+#----------------------Class-----------------------------------------------
+#--------------------------------------------------------------------------
+
+class Hospital:
+    def __init__(self, eName):
+        self.name = eName
+        self.days = 0
+        self.surgery = []
+        self.surgeryCost = []
+        self.medicine = []
+        self.medicineCost = []
+
+  #---------Getters-------
+
+    def getName(self):    
+        return self.name
+
+    def getDays(self):
+        return self.days
+    
+    def getSurgery(self):
+        return self.surgery
+    
+    def getSurgeryCost(self):
+        return sum(self.surgeryCost)
+
+    def getMedicine(self):
+        return self.medicine
+    
+    def getMedicineCost(self):
+        return sum(self.medicineCost)
+    
+
+  #---------Setters-------
+
+    def setName(self, eValue):  
+        self.name = eValue
+
+    def setDays(self, eValue):
+        self.days = eValue
+
+    def setSurgery(self, eValue):
+        self.surgery.append(eValue)
+
+    def setSurgeryCost(self, eValue):
+        self.surgeryCost.append(eValue)
+        
+    def setMedicine(self, eValue):
+        self.medicine.append(eValue)
+
+    def setMedicineCost(self, eValue):
+        self.medicineCost.append(eValue)
+    
+
+#--------------------------------------------------------------------------
+#----------------------Start-----------------------------------------------
+#--------------------------------------------------------------------------            
+
+# This function will display the start of the project
+def projectStart():
+    print('Start of Project 10')
+    print('Written by: Sonnie Chauvin')
+    print('Date: 12/3/25 ')
+    print('-' * 50 )
+    print('\tHospital Billing System')
+    print('-' * 50 + '\n')
+
+# This function will display the start of the project
+def projectEnd():
+    print('-' * 50)
+    print('End of Project 10')
+
+#--------------------------------------------------------------------------
+#----------------------Essential Functions---------------------------------
+#--------------------------------------------------------------------------
+
+# This function will return an integer input from the user
+def getIntegerData(prompt):
+    while (True):
+        try:
+            value = int(input(prompt))
+            return value
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!')
+
+# This function will return a float input from the user
+def getFloatData(prompt):
+    while (True):
+        try:
+            value = float(input(prompt))
+            return value
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!')
+
+# This function will return a string input from the user
+def getStringData(prompt):
+    value = input(prompt)
+    return value
+
+# This function will return a string input from the user
+def getCharData(prompt):
+
+    while (True):
+        value = input(prompt)
+
+        value = value.upper()
+        if (value in ['L', 'S', 'M', 'C']):
+            return value
+
+        print('\t\tERROR Message: Invalid selection')
+
+#--------------------------------------------------------------------------
+#----------------------Loading Data File-----------------------------------
+#--------------------------------------------------------------------------
+        
+def loadFile(fileName):
+    try:
+        fileRead = open(fileName, 'r')
+
+        dictionary = {}    #creates dictionary
+        
+        for line in fileRead:
+            line = line.strip('\n').strip(' ') #removes spaces between lines
+            myData = line.split(',')           #data becomes a list
+            key = myData[0].strip(' ')                 #turns first variable into the key
+            value = float(myData[1].strip(' '))        #turns second value into value, changes to float
+            
+            dictionary[key] = value
+            
+        fileRead.close()
+
+        return dictionary
+        
+    except FileNotFoundError:
+        print('\tERROR MSG! File not found.')
+
+
+#--------------------------------------------------------------------------
+#----------------------Display---------------------------------------------
+#--------------------------------------------------------------------------
+
+def displayItems(dictionary, header):
+    print(header)                             #header defined in main
+    counter = 1                               #starts at 1
+    print('*' * 40)
+    for ctr in dictionary:
+        print('\t', counter, end = '. ')            #adds . after counter
+        print(ctr, '($ ', format(dictionary[ctr],',.2f'),')', sep = '')    #cleaner formating
+        counter = counter +1                  #allows for counter to increase by one per line
+    print('*' * 40)
+
+
+#--------------------------------------------------------------------------
+#----------------------Menu------------------------------------------------
+#--------------------------------------------------------------------------
+
+def mainMenu():
+    print('*' * 40)
+    print('\tGeneric Hospital Name')
+    print('*' * 40)
+    print('\tL      Days in the Hospital')
+    print('\tS      Surgery Performed')
+    print('\tM      Medicine Prescribed')
+    print('\tC      Check out Patient')
+    print('*' * 40)
+    
+#--------------------------------------------------------------------------
+#-----------------------Main-----------------------------------------------
+#--------------------------------------------------------------------------
+        
+def main(): 
+    # Calls function to display the start of project
+    projectStart()
+
+    surgery = loadFile('surgery.txt')
+    medicine = loadFile('medicine.txt')
+
+    if (len(surgery) == 0 or len(medicine) == 0):
+        print('\tNothing found. Hospital closed.')
+
+    else:
+        while True:
+            name = getStringData('\tEnter Patient Name: ')
+
+            myHospital = Hospital(name)    #creates an object
+            while True:
+                
+                mainMenu()
+                selection = getCharData('\tMake your selection: ')
+     #--"L" selection---------------------------------
+                
+                if (selection =='L'):
+                    print('\tDays in hospital')
+                    days = getIntegerData('\n\tNumber of days in hospital: ')
+                    cost = days * 1000
+
+                    print('\tCost: $', format(cost, ',.2f'), sep = '')
+
+                    myHospital.setDays(days)    #set days
+                    
+     #--"S" selection---------------------------------
+                elif (selection == 'S'):
+                    print('\t\nSelection of surgeries performed')
+                    displayItems(surgery, '\n\tSurgery List')
+
+                    items = getIntegerData('\tMake your selection: ')
+
+                    try:     
+                        key, value = list(surgery.items())[items -1]
+                        print('\tSurgeries performed: ',key)
+                        print('\tCost: $', format(value, ',.2f'), sep = '')
+
+                        myHospital.setSurgery(key)
+                        myHospital.setSurgeryCost(value)
+
+                    except IndexError:
+                        print('\t\tERROR MSG! Wrong Selection. Try Again.')
+     #--"M" selection---------------------------------               
+                elif (selection == 'M'):
+                    print('\t\nSelection of medications: ')
+                    displayItems(medicine, '\n\tMedicine List')
+
+                    items = getIntegerData('\n\tMake your selection: ')
+
+                    try:
+                        key, value = list(medicine.items())[items -1]
+                        print('\tMedicine prescribed: ',key)
+                        print('\tCost: $', format(value, ',.2f'), sep = '')
+
+                        myHospital.setMedicine(key)
+                        myHospital.setMedicineCost(value)
+                        
+                    except IndexError:
+                        print('\t\tERROR MSG! Wrong Selection. Try Again.')
+     #--"C" selection--------------------------------             
+                else:
+                    totalCost = 0
+                    print('-' * 40)
+                    print('\t\tFinal Bill')
+                    print('-' * 40)
+                    print('\tName of Patient: ', myHospital.getName())
+                    print('\tNumber of days: ', myHospital.getDays())
+
+                    cost = myHospital.getDays() * 1000
+                    print('\t\tCost: $', format(cost, ',.2f'), sep = '')
+                    totalCost = totalCost + cost
+
+                    print('\n')
+                    print('\tSurgery List: ', myHospital.getSurgery())
+                    print('\t\tSurgery Cost: $', format(myHospital.getSurgeryCost(), ',.2f'), sep = '')
+                    totalCost = totalCost + myHospital.getSurgeryCost()
+
+                    print('\n')
+                    print('\tMedicine List: ', myHospital.getMedicine())
+                    print('\t\tMedicine Cost: $', format(myHospital.getMedicineCost(), ',.2f'), sep = '')
+                    totalCost = totalCost + myHospital.getMedicineCost()
+
+                    print('\n')
+                    print('\tTotal Cost: $', format(totalCost, ',.2f'), sep = '')
+                    break
+
+            cmd = input('\tWould you like to continue? Y) Yes  N) No: ').upper()
+            if (cmd == 'N'):
+                break
+                
+                
+
+    # Calls function to display the start of project
+    projectEnd()
+      
+main() # calling the function main()
