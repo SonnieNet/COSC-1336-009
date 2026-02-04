@@ -1,0 +1,130 @@
+# ---------------------------------------------
+# Name: Sonnie Chauvin
+# Date: 12/1/2025
+# Project: Project 7
+# Status: Complete
+# Class: COSC 1336
+# ---------------------------------------------
+# Project Objectives
+#   Asks user to enter last name, first name, SSN, number of dependents, wage, and employee ID;
+# generates  the user's initials, the users email address, last 4 of SSN, formatted wage, emp. ID, and number of dependents
+# ---------------------------------------------
+
+# This function will display the start of the project
+def projectStart():
+    print('Start of Project 7')
+    print('Written by: Sonnie Chauvin')
+    print('Date: 12/1/25 ')
+    print('-' * 50 )
+    print('\t"Lottery Commissioners Entry"')
+    print('-' * 50 + '\n')
+
+# This function will display the start of the project
+def projectEnd():
+    print('-' * 50)
+    print('End of Project 7')
+
+#--------------------------------------------------------------------------------    
+# This function will return an integer input from the user
+def getIntegerData(prompt):
+    while (True):
+        try:
+            value = int(input(prompt))
+            return value
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!')
+
+# This function will return a float input from the user
+def getFloatData(prompt):
+    while (True):
+        try:
+            value = float(input(prompt))
+            return value
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!')
+
+# This function will return a string input from the user
+def getStringData(prompt):
+    value = input(prompt)
+    return value
+
+# This function will return a string input from the user
+def getCharData(prompt):
+
+    while (True):
+        value = input(prompt)
+
+        value = value.upper()
+        if (value in ['W', 'D', 'E']):
+            return value
+
+        print('\t\tERROR Message: Wrong selection')
+
+#---------------------------------------------------------------------------------------
+
+def getUserInput(input):
+    
+    lastName = getStringData('\tEnter last name: ')
+    firstName = getStringData('\tEnter first name: ')
+    socialNum = getStringData('\tEnter SSN (ex. 111-23-3333): ')
+    depNum = getStringData('\tNumber of dependents: ')
+    wage = getStringData('\tEnter your wage: ')
+
+    return lastName, firstName, socialNum, depNum, wage
+
+def calc(firstName, lastName, socialNum):
+    fullName = firstName.strip(' ') + " " + lastName.strip(' ')
+    email = lastName.strip(' ')[0].upper() + firstName.strip(' ') + '@gmail.com'
+    fourDigitSSN = socialNum.strip()[7:11]
+    empID = lastName + '.' + fourDigitSSN
+
+    return fullName, email, fourDigitSSN, empID
+
+def validateSSN(socialNum):
+    while True:
+            if (len(socialNum) == 11 and
+            socialNum[3] == '-' and
+            socialNum[6] == '-' and
+            socialNum[:3].isdigit() and
+            socialNum[4:6].isdigit()):
+                return socialNum
+            else:
+                print('\t\n***** ERROR MSG! Invalid format! *****')
+                socialNum = input('\tRe-enter SSN, using correct format: ')
+                
+                
+def getInitials(lastName, firstName):
+    initials = lastName.strip(' ')[0].upper() + firstName.strip(' ')[0].upper()
+    return initials
+
+#---------------------------------------------------------------------------------------
+
+def main(): 
+    # Calls function to display the start of project
+    projectStart()
+
+    lastName, firstName, socialNum, depNum, wage = getUserInput(input)
+
+    fullName, email, fourDigitSSN, empID  = calc(firstName, lastName, socialNum)
+
+    socialNum = validateSSN(socialNum)
+
+    initials = getInitials(lastName, firstName)
+
+#------Display Summary---------
+    print('-' * 50 + '\n')
+    print('\tName: ', fullName)
+    print('\tUsers Initials: ', initials)
+    print('\tEmail: ', email)
+    print('\tLast 4-digits of SSN: ', fourDigitSSN)
+    print('\tNumber of dependents: ', depNum)
+    print('\tWage: $', wage)
+    print('\tEmployee ID: ', empID)
+    print('\n' + '-' * 50)
+
+    # Below we start coding
+
+    # Calls function to display the start of project
+    projectEnd()
+      
+main() # calling the function main()
