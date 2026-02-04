@@ -1,0 +1,101 @@
+# ---------------------------------------------
+# Name: Sonnie Chauvin
+# Date: 11/22/25
+# Project: Project 5
+# Status: WIP
+# Class: COSC 1336
+# ---------------------------------------------
+# Project Objectives
+#   Display the distance traveled at the end of each hour, with user input of the vehicles speed and numbers of hours traveled
+# ---------------------------------------------
+
+# This function will display the start of the project
+def projectStart():
+    print('Start of Project 5')
+    print('Written by: Sonnie Chauvin')
+    print('Date: 11/22/25 ')
+    print('-' * 50 )
+    print('\tDistance Calculator - based on hours traveled and speed')
+    print('-' * 50 + '\n')
+
+# This function will display the start of the project
+def projectEnd():
+    print('-' * 50)
+    print('End of Project 5')
+
+# This function will return an integer input from the user
+def getIntegerData(prompt):
+    while (True):
+        try:
+            value = int(input(prompt))
+
+            if (value > 1):
+                return value
+            else:
+                print('\t\tERROR MSG! Input must be an integer greater than 1.') #yields error for negative numbers
+                
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!') 
+
+# This function will return a float input from the user
+def getFloatData(prompt):
+    while (True):
+        try:
+            value = float(input(prompt))
+            return value
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!')
+
+# This function will return a string input from the user
+def getStringData(prompt):
+    value = input(prompt)
+    return value
+
+# This function will return a string input from the user
+def getCharData(prompt):
+
+    while (True):
+        value = input(prompt)
+
+        value = value.upper()
+        if (value in ['W', 'D', 'E']):
+            return value
+
+        print('\t\tERROR Message: Wrong selection')
+#-----------------------------------------------------------------------------------------------------------------
+
+
+
+
+#-----------------------------------------------------------------------------------------------------------------
+    
+    
+def main(): 
+    # Calls function to display the start of project
+    projectStart()
+
+    speed = getIntegerData('Enter speed of vehicle in MPH: ')
+    hours = getIntegerData('Enter hours traveled: ')
+
+        
+    print('-' * 20)
+    print('Summary: Distance Traveled')
+    print('-' * 20)
+
+    for hour in range(1, hours +1): # Displays all hours and speed. ex if 3 is entered, shows 1, 2, etc.
+        distance = speed * hour
+        print(hour, '\t', distance)
+
+    print('-' * 20)
+    
+
+    
+
+    # Below we start coding
+
+    # Calls function to display the start of project
+    projectEnd()
+      
+main() # calling the function main()
+
+
