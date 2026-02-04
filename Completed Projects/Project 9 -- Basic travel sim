@@ -1,0 +1,171 @@
+# ---------------------------------------------
+# Name: Sonnie Chauvin
+# Date: 12/8/2025
+# Project: Project 9
+# Status: WIP
+# Class: COSC 1336
+# ---------------------------------------------
+# Project Objectives
+#   Car Travel Information
+# ---------------------------------------------
+
+# This function will display the start of the project
+def projectStart():
+    print('Start of Project 9')
+    print('Written by: Sonnie Chauvin')
+    print('Date: 12/8/2025 ')
+    print('-' * 50 )
+    print('Car Travel Simulator using Acceleration and Braking')
+    print('-' * 50 + '\n')
+
+# This function will display the start of the project
+def projectEnd():
+    print('-' * 50)
+    print('End of Project 8')
+#-------------------------------------------------------------------
+    
+# This function will return an integer input from the user
+def getIntegerData(prompt):
+    while (True):
+        try:
+            value = int(input(prompt))
+            return value
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!')
+
+# This function will return a float input from the user
+def getFloatData(prompt):
+    while (True):
+        try:
+            value = float(input(prompt))
+            return value
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!')
+
+# This function will return a string input from the user
+def getStringData(prompt):
+    value = input(prompt)
+    return value
+
+# This function will return a string input from the user
+def getCharData(prompt):
+
+    while (True):
+        value = input(prompt)
+
+        value = value.upper()
+        if (value in ['W', 'D', 'E']):
+            return value
+
+        print('\t\tERROR Message: Wrong selection')
+#----------------------------------------------------------
+class Car:
+    def __init__(self, year, make):
+        self.year = year
+        self.make = make
+        self.speed = 0
+
+      #------getters----------
+    def getYear(self):
+        return self.year
+
+    def getMake(self):
+        return self.make
+    
+    def getSpeed(self):
+        return self.speed
+
+      #------setters----------
+    def setYear(self, eValue):
+        self.year = eValue
+
+    def setMake(self, eValue):
+        self.make = eValue
+    
+    def setSpeed(self, eValue):
+        self.speed = eValue
+
+      #------calc---------
+    def accel(self):
+        self.setSpeed(self.getSpeed() +5)
+
+    def brake(self):
+        
+        self.setSpeed(self.getSpeed() - 5 if self.getSpeed() >= 5 else 0)
+        
+
+
+#----------------------------------------------------------
+
+def userInput():
+
+    make = getStringData('\tCar Make: ')
+    year = getIntegerData('\tEnter year: ')
+
+    accel = getIntegerData('\tHow many times did you accelerate? ')
+    brake = getIntegerData('\tHow many times did you brake? ')
+
+    return make, year, accel, brake
+
+
+#---------------------------------------------------------
+
+def displaySummary(actionNum, actionType, speed):
+
+    
+    if actionType == 'Accelerate':
+        print('\tAccelerate #' + str(actionNum) + ':' + '\t Increase by 5 mph.' + '\tCurrent speed: ' + str(speed) + 'mph')
+
+    else:
+        print('\tBrake #' + str(actionNum) + ':' + '\t Decrease by 5 mph.' + '\tCurrent speed: ' + str(speed) + 'mph')
+
+    
+
+
+#---------------------------------------------------------
+        
+
+def main(): 
+    # Calls function to display the start of project
+    projectStart()
+    make, year, accel, brake = userInput()
+
+    myCar = Car(year, make)
+
+    
+ #----------Accelerate-----
+
+    print('\n')
+    print('-' * 30)
+    print('\tCar Travel Information')
+    print('-' * 30, '\n')
+    print('Acceleration Applied: ')
+    print('-' * 30)
+
+    for ctr in range(1, accel +1):
+        myCar.accel()
+        displaySummary(ctr, 'Accelerate', myCar.getSpeed())
+
+
+ #----------Braking--------
+
+    print('\n')
+    print('-' * 30)
+    print('Brake Applied:')
+    print('-' * 30)
+
+    for ctr in range(1, brake +1):
+        myCar.brake()
+        displaySummary(ctr, 'Brake', myCar.getSpeed())
+
+
+    print('-' * 30)
+    print(make, 'final speed: ', myCar.getSpeed(), 'mph')
+
+        
+    # Below we start coding
+
+    # Calls function to display the start of project
+    projectEnd()
+      
+main() # calling the function main()
