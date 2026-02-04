@@ -1,0 +1,100 @@
+# ---------------------------------------------
+# Name: Sonnie Chauvin
+# Date: 11/26/ 2025
+# Project: Project 6
+# Status: completed
+# Class: COSC 1336
+# ---------------------------------------------
+# Project Objectives
+#   Grade Statistics
+# ---------------------------------------------
+
+# This function will display the start of the project
+def projectStart():
+    print('Start of Project 6')
+    print('Written by: Sonnie Chauvin')
+    print('Date: 11/26/2025 ')
+    print('-' * 50 )
+    print('\tGrade Statistics')
+    print('-' * 50 + '\n')
+
+# This function will display the start of the project
+def projectEnd():
+    print('-' * 50)
+    print('End of Project 6')
+
+# This function will return an integer input from the user
+def getIntegerData(prompt):
+    while (True):
+        try:
+            value = int(input(prompt))
+            return value
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!')
+
+# This function will return a float input from the user
+def getFloatData(prompt):
+    while (True):
+        try:
+            value = float(input(prompt))
+            return value
+        except ValueError:
+            print('\t\tError Message.  Enter numbers ONLY!')
+
+# This function will return a string input from the user
+def getStringData(prompt):
+    value = input(prompt)
+    return value
+
+# This function will return a string input from the user
+def getCharData(prompt):
+
+    while (True):
+        value = input(prompt)
+
+        value = value.upper()
+        if (value in ['W', 'D', 'E']):
+            return value
+
+        print('\t\tERROR Message: Wrong selection')
+
+def main(): 
+    # Calls function to display the start of project
+    projectStart()
+
+    grades = []
+    try:
+        readFile = open('data.txt', 'r')
+
+        for line in readFile:
+            line = line.strip('\n')
+
+            value = int(line)
+
+            grades.append(value)
+        readFile.close()
+
+        countNum = len(grades)
+        sumNum = sum(grades)
+        averageNum =(sum(grades))/(len(grades))
+        maxNum = max(grades)
+        minNum = min(grades)
+
+        print('\tThe numbers are: ', grades)
+        print('\tThe count of the numbers: ', countNum)
+        print('\tThe sum of the numbers: ',sumNum)
+        print('\tThe average of the numbers: ', averageNum)
+        print('\tThe max number: ',maxNum)
+        print('\tThe min number: ', minNum)
+        print('\n')
+    except FileNotFoundError:
+        print('\t\tERROR MSG! No such file!')
+
+    # Below we start coding
+
+    # Calls function to display the start of project
+    projectEnd()
+      
+main() # calling the function main()
+
+
